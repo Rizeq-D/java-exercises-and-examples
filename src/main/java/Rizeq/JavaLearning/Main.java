@@ -279,6 +279,38 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
+
+                      /*
+                      LAMBDA PRACTICE
+                      */
+
+        Human1 ishido = new Human1();
+        //walker(ishido);
+
+        Robot tars = new Robot();
+        //walker(tars);
+
+        walker(() -> System.out.println("... is walking"));
+
+        Walkable walki = () -> {
+            System.out.println("... is walking");
+            System.out.println("... is trying to stop");
+
+        };
+
+        ALambdaInterface anotherTest = () -> {
+            System.out.println("So the type of the Lambda expression must be a functional interface " +
+                    "which means an interface with just one abstract method");
+        };
+
+        walker(walki);
+        anotherTest.justSomeMethod();
+
+    }
+
+    public static void walker(Walkable walkableEntity) {
+        walkableEntity.walk();
+
     }
 
 }
