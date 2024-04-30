@@ -282,6 +282,8 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
+// ------------------------------------------------------------------------------------------------
+
                       /*
                       LAMBDA PRACTICE
                       */
@@ -312,21 +314,35 @@ public class Main {
 //        walker(walki);
 //        anotherTest.justSomeMethod();
 
-        Calculator cal = (one, two) ->  one + two; {
-            System.out.println(cal.calculate(2,2));
-        }
+// ------------------------------------------------------------------------------------------------
 
-        Calculator nonZeroDivision = (num1, num2) -> {
-            NonZeroDivision calculator = new NonZeroDivision();
+//        Calculator cal = (one, two) ->  one + two; {
+//            System.out.println(cal.calculate(2,2));
+//        }
+//
+//        Calculator nonZeroDivision = (num1, num2) -> {
+//            NonZeroDivision calculator = new NonZeroDivision();
+//
+//            try {
+//                return String.valueOf(calculator.nunZeros(num1, num2));
+//            }catch (ArithmeticException e) {
+//                return "Error: " + e.getMessage();
+//            }
+//        };
+//
+//        System.out.println(nonZeroDivision.calculate(4,4));
 
-            try {
-                return String.valueOf(calculator.nunZeros(num1, num2));
-            }catch (ArithmeticException e) {
-                return "Error: " + e.getMessage();
+// ------------------------------------------------------------------------------------------------
+
+        StringRevers testo = (string) -> {
+            String result = "";
+            for (int i = string.length() - 1; i >= 0; i--) {
+                result = result + (string.charAt(i)) + ' ';
             }
+            return result;
         };
 
-        System.out.println(nonZeroDivision.calculate(4,4));
+        System.out.println(testo.reverse("SANDBOX"));
 
     }
 
