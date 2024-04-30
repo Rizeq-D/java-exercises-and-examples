@@ -1,5 +1,8 @@
 package Rizeq.JavaLearning;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.awt.desktop.PreferencesEvent;
 import java.sql.*;
 import java.util.*;
 import java.util.concurrent.Executor;
@@ -279,37 +282,51 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-
                       /*
                       LAMBDA PRACTICE
                       */
 
-        Human1 ishido = new Human1();
-        //walker(ishido);
+//        Human1 ishido = new Human1();
+//        //walker(ishido);
+//
+//        Robot tars = new Robot();
+//        //walker(tars);
+//
+//        walker(() -> System.out.println("... is walking"));
+//
+//        Walkable walki = () -> {
+//            System.out.println("... is walking");
+//            System.out.println("... is trying to stop");
+//
+//        };
+//
+//        ALambdaInterface anotherTest = () -> {
+//            System.out.println("So the type of the Lambda expression must be a functional interface " +
+//                    "which means an interface with just one abstract method");
+//        };
+//        public static void walker(Walkable walkableEntity) {
+//            walkableEntity.walk();
+//
+//        }
+//
+//        walker(walki);
+//        anotherTest.justSomeMethod();
 
-        Robot tars = new Robot();
-        //walker(tars);
+        Calculator cal = (one, two) ->  one + two; {
+            System.out.println(cal.calculate(2,2));
+        }
 
-        walker(() -> System.out.println("... is walking"));
+        Calculator nonZeroDivision = (num1, num2) -> {
+            NonZeroDivision calculator = new NonZeroDivision();
 
-        Walkable walki = () -> {
-            System.out.println("... is walking");
-            System.out.println("... is trying to stop");
-
+            try {
+                return String.valueOf(calculator.nunZeros(num1, num2));
+            }catch (ArithmeticException e) {
+                return "Error: " + e.getMessage();
+            }
         };
 
-        ALambdaInterface anotherTest = () -> {
-            System.out.println("So the type of the Lambda expression must be a functional interface " +
-                    "which means an interface with just one abstract method");
-        };
-
-        walker(walki);
-        anotherTest.justSomeMethod();
-
-    }
-
-    public static void walker(Walkable walkableEntity) {
-        walkableEntity.walk();
+        System.out.println(nonZeroDivision.calculate(4,4));
 
     }
 
