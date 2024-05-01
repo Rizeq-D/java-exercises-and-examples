@@ -334,19 +334,121 @@ public class Main {
 
 // ------------------------------------------------------------------------------------------------
 
-        StringRevers testo = (string) -> {
-            String result = "";
-            for (int i = string.length() - 1; i >= 0; i--) {
-                result = result + (string.charAt(i)) + ' ';
-            }
-            return result;
-        };
+//        StringRevers testo = (string) -> {
+//            String result = "";
+//            for (int i = string.length() - 1; i >= 0; i--) {
+//                result = result + (string.charAt(i)) + ' ';
+//            }
+//            return result;
+//        };
+//
+//        System.out.println(testo.reverse("SANDBOX"));
 
-        System.out.println(testo.reverse("SANDBOX"));
+// --------------------------------------------------------------------------------------------------
+
+//        ComputedNumbers computedNumbers = (n) -> {
+//            int result = 1;
+//            for (int i = 1; i <= n; i++) {
+//                result = i * result;
+//            }
+//            return result;
+//        };
+//
+//        System.out.println(computedNumbers.compute(10));
+
+// --------------------------------------------------------------------------------------------------
+
+        List<Vehicle> vehiclesList = Arrays.asList(
+                new Vehicle("BMW", "M3", "WHITE",20000, 1),
+                new Vehicle("BMW", "X6", "PINK",50000, 2),
+                new Vehicle("HONDA", "CIVIC", "BLACK",150000, 3),
+                new Vehicle("TOYOTA", "COROLLA", "BLUE",13000, 4),
+                new Vehicle("TOYOTA", "CAMRY", "NAVI",25000, 5),
+                new Vehicle("NISSAN", "GTR", "PURPLE",37000, 6),
+                new Vehicle("NISSAN", "SENTRA", "YELLOW",22000, 7),
+                new Vehicle("MITSUBISHI", "EVO", "RED",17000, 8),
+                new Vehicle("MITSUBISHI", "LANCER", "GREY",11000, 9),
+                new Vehicle("JEEP", "WRANGLER", "BROWN",40000, 10),
+                new Vehicle("VW", "GOLF", "SILVER",10000, 11),
+                new Vehicle("VW", "PASSAT", "ORANGE",10000, 12)
+        );
+
+        //printVehiclePrice(vehiclesList, 17000, 37000);
+        //printVehicleByColor(vehiclesList, "Green");
+
+        System.out.println("printing vehicles between the range 10000 & 20000");
+
+        printVehicles(vehiclesList, new VehicleCondition() {
+            @Override
+            public boolean test(Vehicle vehicle) {
+                return vehicle.getPrice() >= 10000 && vehicle.getPrice() <= 20000;
+            }
+        });
+
+        System.out.println("printing the vehicles that has a red color");
+
+       printVehicles(vehiclesList, new VehicleCondition() {
+           @Override
+           public boolean test(Vehicle vehicle) {
+               return vehicle.getColor().equalsIgnoreCase("red");
+           }
+       });
+
+       // USING THE LAMBDA EXPRESSION!!!
+        System.out.println();
+        System.out.println();
+        printVehicles(vehiclesList, (vehicle -> vehicle.getColor().equalsIgnoreCase("red")));
+        printVehicles(vehiclesList, (vehicle -> vehicle.getPrice() >= 10000 && vehicle.getPrice() <= 20000));
+
 
     }
 
+    public static void printVehiclePricesRange(List<Vehicle> vehiclesList, int low, int high) {
+        for (Vehicle vehicle : vehiclesList ) {
+            if (low <= vehicle.getPrice() && high >= vehicle.getPrice()) {
+                vehicle.printVehicle();
+            }
+        }
+    }
+
+    public static void printVehicleByColor(List<Vehicle> vehiclesList, String color) {
+        for (Vehicle vehicle : vehiclesList) {
+            if (color.equals(vehicle.getColor())) {
+                vehicle.printVehicle();
+            }
+        }
+    }
+
+    // there is a java class called Predicate class can do the same work for us with
+    // less coding lines instead of the VehicleCondition class.
+    public static void printVehicles (List<Vehicle> vehiclesList, VehicleCondition condition) {
+        for (Vehicle vehicle : vehiclesList) {
+            if (condition.test(vehicle)) {
+                vehicle.printVehicle();
+            }
+        }
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

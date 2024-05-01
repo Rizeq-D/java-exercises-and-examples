@@ -5,12 +5,14 @@ import java.util.Objects;
 public class Vehicle {
     private String company;
     private String model;
+    private String color;
     private double price;
     private int id;
 
-    public Vehicle(String company, String model, double price, int id) {
+    public Vehicle(String company, String model, String color,double price, int id) {
         this.company = company;
         this.model = model;
+        this.color = color;
         this.price = price;
         this.id = id;
     }
@@ -31,6 +33,14 @@ public class Vehicle {
         this.model = model;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -47,13 +57,18 @@ public class Vehicle {
         this.id = id;
     }
 
+    public void printVehicle() {
+        System.out.println(this);
+    }
+
     @Override
     public String toString() {
-        return "Vehicle {" +
-                "company= '" + company + '\'' +
-                ", model= '" + model + '\'' +
-                ", price= " + price +
-                ", id= " + id +
+        return "Vehicle{" +
+                "company='" + company + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                ", id=" + id +
                 '}';
     }
 
@@ -62,11 +77,11 @@ public class Vehicle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vehicle vehicle = (Vehicle) o;
-        return Double.compare(price, vehicle.price) == 0 && id == vehicle.id && Objects.equals(company, vehicle.company) && Objects.equals(model, vehicle.model);
+        return Double.compare(price, vehicle.price) == 0 && id == vehicle.id && Objects.equals(company, vehicle.company) && Objects.equals(model, vehicle.model) && Objects.equals(color, vehicle.color);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(company, model, price, id);
+        return Objects.hash(company, model, color, price, id);
     }
 }
